@@ -1,0 +1,21 @@
+.app-body{
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+}
+.app-head{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.app-footer{
+    display: flex;
+    justify-content: center;
+    
+}
+.app{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
