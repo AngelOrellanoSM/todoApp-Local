@@ -1,0 +1,44 @@
+.diaCalendar-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-day{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content-day:hover{
+    cursor: pointer;
+}
+
+.content-day > p{
+    width: max-content;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.dayActual{
+    padding: 0rem 0.5rem;
+    border-radius: 10px;
+    background-color: rgb(179, 206, 247);
+    border: 1px solid #101a74;
+}
+
+.mesActual{
+    color: #000;
+}
+
+.mesDiferente{
+    color: #797979
+}
+
+.content-tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
