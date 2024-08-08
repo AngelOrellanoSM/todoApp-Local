@@ -1,0 +1,9 @@
+.taskCalendar-content{
+    padding: 0.15rem;
+    border-radius: 10px;
+    width: 100%;
+    color: #363636;
+    font-size: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+}

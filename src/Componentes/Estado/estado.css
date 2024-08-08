@@ -1,3 +1,11 @@
 .estado-content{
     cursor: pointer;
 }
+
+.seleccionado{
+    font-weight: 600;
+}
+
+.seleccionado > p{
+    border-bottom: 1px solid;
+}

@@ -66,11 +66,11 @@ const Todos = () => {
         <div className={"todos-content"}>
             <BarraBusqueda />
             <div className={"content-estados"}>
-                <Estado estado={"all"} cantidad={estados.all} click={filtrarEstado}/>
+                <Estado estado={"all"} cantidad={estados.all} click={filtrarEstado} selected={seleccionEstado.all}/>
                 <p>|</p>
-                <Estado estado={"Completado"} cantidad={estados.completo} click={filtrarEstado}/>
+                <Estado estado={"Completado"} cantidad={estados.completo} click={filtrarEstado} selected={seleccionEstado.completado}/>
                 <p>|</p>
-                <Estado estado={"Incompleto"} cantidad={estados.incompleto} click={filtrarEstado}/>
+                <Estado estado={"Incompleto"} cantidad={estados.incompleto} click={filtrarEstado} selected={seleccionEstado.incompleto}/>
             </div>
             <div className={"content-prioridad"}>
                 {relevanciaExistencia.Urgente !== 0 && <Relevancia relevancia={"Urgente"}/>}
