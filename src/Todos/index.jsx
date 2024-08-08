@@ -7,7 +7,7 @@ import { TaskContext } from '../Contexts/TasksContext'
 
 const Todos = () => {
 
-    const {tasks, filtrarTask} = useContext(TaskContext);
+    const {setSeleccionEstado, seleccionEstado, taskDerivado} = useContext(TaskContext);
     
     // FUNCION PARA VER SI ESTAN TODOS LAS CATEGORIAS DE RELEVANCIA ---------------------------------------------------------------
     const [relevanciaExistencia, setRelevanciaExistencia] = useState({"Importante" : 0 , "Urgente" : 0 , "Complementario" : 0})
@@ -15,7 +15,7 @@ const Todos = () => {
     useEffect(() => {
         const exists = () =>{
             const updateRelevancia = {"Importante" : 0 , "Urgente" : 0 , "Complementario" : 0};
-            tasks.forEach((task) => {
+            taskDerivado.forEach((task) => {
                 if(task.importancia === "Importante"){
                     updateRelevancia.Importante = 1;
                 }else if (task.importancia === "Urgente"){
@@ -28,7 +28,7 @@ const Todos = () => {
         }
         exists();
         
-    }, [tasks]);
+    }, [taskDerivado]);
 
     //--------------------------------------------------------------------------------------------------------------------------------
 
@@ -37,45 +37,65 @@ const Todos = () => {
 
     useEffect(() => {
         const estadosUpdate = {"all" : 0 , "completo": 0 , "incompleto": 0};
-        estadosUpdate.all = tasks.length;
-        estadosUpdate.completo = tasks.filter((task) => task.completado === 1).length;
+        estadosUpdate.all = taskDerivado.length;
+        estadosUpdate.completo = taskDerivado.filter((task) => task.completado === 1).length;
         estadosUpdate.incompleto = estadosUpdate.all - estadosUpdate.completo;
 
         setEstados(estadosUpdate);
 
-    }, [tasks]);
+    }, [taskDerivado]);
     //-----------------------------------------------------------------------------------------------------------------------------
+
+
     // FUNCION DE FILTRADO POR ESTADO -------------------------------------------------------------------------------------------------
-    const [seleccionEstado, setSeleccionEstado] = useState({"completado": 0, "incompleto" : 0, "all" : 1})
-
-    const filtrarEstado = (estado) => {
-        let seleccion = {"completado": 0, "incompleto" : 0, "all" : 1};
-        estado === "Completado" ? seleccion = {"completado": 1, "incompleto" : 0 , "all" : 0} 
-            : estado === "Incompleto"  ? seleccion = {"completado": 0, "incompleto" : 1 , "all" : 0} 
-            : seleccion = {"completado": 0, "incompleto" : 0, "all" : 1} ;
-        setSeleccionEstado(seleccion);
+    
+    const seleccionarEstado = (estado) => {
+        if(estado === "all"){
+            setSeleccionEstado({"completado": 0, "incompleto" : 0, "all" : 1});
+        }else if(estado === "Completado"){
+            setSeleccionEstado({"completado": 1, "incompleto" : 0 , "all" : 0});
+        }else{
+            setSeleccionEstado({"completado": 0, "incompleto" : 1 , "all" : 0});
+        }
     }
-
-    useEffect(() => {
-        const filtro = seleccionEstado.all === 1 ? "all" : seleccionEstado.completado;  
-        filtrarTask("completado", filtro);
-        // eslint-disable-next-line
-    }, [seleccionEstado]);
     //---------------------------------------------------------------------------------------------------------
+    
     return (
         <div className={"todos-content"}>
             <BarraBusqueda />
             <div className={"content-estados"}>
-                <Estado estado={"all"} cantidad={estados.all} click={filtrarEstado} selected={seleccionEstado.all}/>
+                <Estado 
+                    estado={"all"} 
+                    cantidad={estados.all} 
+                    click={seleccionarEstado} 
+                    selected={seleccionEstado.all}
+                />
                 <p>|</p>
-                <Estado estado={"Completado"} cantidad={estados.completo} click={filtrarEstado} selected={seleccionEstado.completado}/>
+                <Estado 
+                    estado={"Completado"} 
+                    cantidad={estados.completo} 
+                    click={seleccionarEstado} 
+                    selected={seleccionEstado.completado}
+                />
                 <p>|</p>
-                <Estado estado={"Incompleto"} cantidad={estados.incompleto} click={filtrarEstado} selected={seleccionEstado.incompleto}/>
+                <Estado 
+                    estado={"Incompleto"} 
+                    cantidad={estados.incompleto} 
+                    click={seleccionarEstado} 
+                    selected={seleccionEstado.incompleto}
+                />
             </div>
             <div className={"content-prioridad"}>
                 {relevanciaExistencia.Urgente !== 0 && <Relevancia relevancia={"Urgente"}/>}
                 {relevanciaExistencia.Importante !== 0 && <Relevancia relevancia={"Importante"}/>}
                 {relevanciaExistencia.Complementario !== 0 && <Relevancia relevancia={"Complementario"}/>}
+                {
+                    relevanciaExistencia.Urgente === 0 ? relevanciaExistencia.Importante === 0 ? relevanciaExistencia.Complementario === 0  ? 
+                    <div>
+                        No se han encontrado tareas.
+                    </div>
+                    :'':'':''
+                }
             </div>
         </div>
     )

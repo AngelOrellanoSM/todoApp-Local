@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const TaskContext = createContext();
 
@@ -343,21 +343,46 @@ const TaskProvider = ({children}) => {
         }
     ]);
 
+    const [taskFiltro1, setTaskFiltro1] = useState(tasks);
     const [taskDerivado, setTaskDerivado] = useState(tasks);
+    const [busqueda, setBusqueda] = useState("");
+    const [seleccionEstado, setSeleccionEstado] = useState(
+        {"completado": 0, "incompleto" : 0, "all" : 1});
 
-    const filtrarTask = (propiedad, filtro) =>{
 
-        if(filtro === "all"){
-            setTaskDerivado(tasks);
+        
+    useEffect(() => {
+        if(seleccionEstado.all === 1){
+            setTaskFiltro1(tasks);
+        }else if(seleccionEstado.completado === 1){
+            const temp = tasks.filter((task) => {
+                return task.completado === 1;
+            })
+            setTaskFiltro1(temp);
         }else{
-            const taskTemporal = tasks.filter((task) => task[propiedad] === filtro);
-            setTaskDerivado(taskTemporal);
+            const temp = tasks.filter((task) => {
+                return task.completado === 0;
+            })
+            setTaskFiltro1(temp);
         }
+    }, [seleccionEstado, tasks]);
 
-    }
+
+    useEffect(() => {
+        const filtro = busqueda.toLowerCase();
+        const taskTemporal = taskFiltro1.filter((task) => {
+            if(task.titulo.toLowerCase().includes(filtro) || task.descripcion.toLowerCase().includes(filtro)){
+                return true;
+            }else{
+                return false;
+            }
+            })
+        setTaskDerivado(taskTemporal);
+    }, [busqueda, taskFiltro1])
+
 
     return (
-        <TaskContext.Provider value={{tasks, filtrarTask, taskDerivado}}>
+        <TaskContext.Provider value={{tasks, taskDerivado, setBusqueda, setSeleccionEstado, seleccionEstado}}>
             {children}
         </TaskContext.Provider>
     )
