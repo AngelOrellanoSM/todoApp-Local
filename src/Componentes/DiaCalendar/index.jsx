@@ -1,11 +1,10 @@
+import { FechaContext } from '../../Contexts/FechaContext';
 import './diaCalendar.css'
 import { useContext } from 'react';
-import { FechaContext } from '../../FechaContex';
 
 const DiaCalendar = ( {dia, mes, año, fechaCalendar}) => {
 
     const {fechaActual} = useContext(FechaContext);
-    console.log(fechaActual);
 
     return (
         <div className={`diaCalendar-content`}>

@@ -5,7 +5,7 @@ import { GrCaretPrevious } from "react-icons/gr";
 
 import React, {useState, useEffect, useContext} from 'react';
 import { DiaCalendar } from '../Componentes/DiaCalendar';
-import { FechaContext } from '../FechaContex';
+import { FechaContext } from '../Contexts/FechaContext';
 
 
 const Calendario = () => {

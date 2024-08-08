@@ -2,12 +2,34 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    border-left: 3px solid #FA6D5A;
+}
+
+.Urgente-content{
+    border-left: 3px solid #F5655D;
+}
+
+.Importante-content{
+    border-left: 3px solid #E8F55D;
+}
+
+.Complementario-content{
+    border-left: 3px solid #5CAAF4;
 }
 
 .content-titulo{
-    background-color: #FA6D5A;
     padding-left: 1.5rem;
+}
+
+.Urgente{
+    background-color: #F5655D;
+}
+
+.Importante{
+    background-color: #E8F55D;
+}
+
+.Complementario{
+    background-color: #5CAAF4;
 }
 
 .content-tareas{
