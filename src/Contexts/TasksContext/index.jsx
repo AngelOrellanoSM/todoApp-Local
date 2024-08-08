@@ -368,21 +368,26 @@ const TaskProvider = ({children}) => {
     }, [seleccionEstado, tasks]);
 
 
-    useEffect(() => {
-        const filtro = busqueda.toLowerCase();
-        const taskTemporal = taskFiltro1.filter((task) => {
+    const filtroBusqueda = (search, taskObjective) => {
+        const filtro = search.toLowerCase();
+        const taskTemporal = taskObjective.filter((task) => {
             if(task.titulo.toLowerCase().includes(filtro) || task.descripcion.toLowerCase().includes(filtro)){
                 return true;
             }else{
                 return false;
             }
-            })
+        })
+        return taskTemporal;
+    }
+
+    useEffect(() => {
+        const taskTemporal = filtroBusqueda(busqueda, taskFiltro1);
         setTaskDerivado(taskTemporal);
     }, [busqueda, taskFiltro1])
 
 
     return (
-        <TaskContext.Provider value={{tasks, taskDerivado, setBusqueda, setSeleccionEstado, seleccionEstado}}>
+        <TaskContext.Provider value={{tasks, taskDerivado, setBusqueda, setSeleccionEstado, seleccionEstado, filtroBusqueda, busqueda}}>
             {children}
         </TaskContext.Provider>
     )

@@ -7,7 +7,7 @@ import { TaskContext } from '../Contexts/TasksContext'
 
 const Todos = () => {
 
-    const {setSeleccionEstado, seleccionEstado, taskDerivado} = useContext(TaskContext);
+    const {setSeleccionEstado, seleccionEstado, taskDerivado, tasks, busqueda, filtroBusqueda} = useContext(TaskContext);
     
     // FUNCION PARA VER SI ESTAN TODOS LAS CATEGORIAS DE RELEVANCIA ---------------------------------------------------------------
     const [relevanciaExistencia, setRelevanciaExistencia] = useState({"Importante" : 0 , "Urgente" : 0 , "Complementario" : 0})
@@ -33,17 +33,19 @@ const Todos = () => {
     //--------------------------------------------------------------------------------------------------------------------------------
 
     // FUNCION PARA CONTAR LOS ESTADOS --------------------------------------------------------------------------------------------
-    const [estados, setEstados] = useState({"all" : 0 , "completo": 0 , "incompleto": 0})
+    const [estados, setEstados] = useState({"all" : tasks.length , "completo": tasks.filter((task) => task.completado === 1).length , "incompleto": tasks.filter((task) => task.completado === 0).length});
 
     useEffect(() => {
+
         const estadosUpdate = {"all" : 0 , "completo": 0 , "incompleto": 0};
-        estadosUpdate.all = taskDerivado.length;
-        estadosUpdate.completo = taskDerivado.filter((task) => task.completado === 1).length;
+        const taskEvaluado = filtroBusqueda(busqueda, tasks);
+        estadosUpdate.all = taskEvaluado.length;
+        estadosUpdate.completo = taskEvaluado.filter((task) => task.completado === 1).length;
         estadosUpdate.incompleto = estadosUpdate.all - estadosUpdate.completo;
 
-        setEstados(estadosUpdate);
-
-    }, [taskDerivado]);
+        setEstados(estadosUpdate);    
+        // eslint-disable-next-line    
+    }, [busqueda, tasks]);
     //-----------------------------------------------------------------------------------------------------------------------------
 
 
