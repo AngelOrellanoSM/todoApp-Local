@@ -25,8 +25,9 @@ const TaskProvider = ({children}) => {
     const fechaPrueba19 = new Date(fechaPrueba.getTime() + 18 * 24 * 60 * 60 * 1000);
     const fechaPrueba20 = new Date(fechaPrueba.getTime() + 19 * 24 * 60 * 60 * 1000);
 
-    const [tasks] = useState([
+    const [tasks, setTasks] = useState([
         {
+            index: 1,
             titulo: "Tarea 1",
             descripcion: "Descripción de la Tarea 1",
             etiqueta: "Trabajo",
@@ -36,6 +37,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 2,
             titulo: "Tarea 2",
             descripcion: "Descripción de la Tarea 2",
             etiqueta: "Hogar",
@@ -44,16 +46,19 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 2.1",
                     descripcion: "Descripción de la Subtarea 2.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 2.2",
                     descripcion: "Descripción de la Subtarea 2.2",
                     completado: 0
                 },
                 {
+                    index: 3,
                     titulo: "Subtarea 2.3",
                     descripcion: "Descripción de la Subtarea 2.3",
                     completado: 1
@@ -61,6 +66,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 3,
             titulo: "Tarea 3",
             descripcion: "Descripción de la Tarea 3",
             etiqueta: "Estudio",
@@ -70,6 +76,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 4,
             titulo: "Tarea 4",
             descripcion: "Descripción de la Tarea 4",
             etiqueta: "Ejercicio",
@@ -78,16 +85,19 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 4.1",
                     descripcion: "Descripción de la Subtarea 4.1",
                     completado: 0
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 4.2",
                     descripcion: "Descripción de la Subtarea 4.2",
                     completado: 1
                 },
                 {
+                    index: 3,
                     titulo: "Subtarea 4.3",
                     descripcion: "Descripción de la Subtarea 4.3",
                     completado: 0
@@ -95,6 +105,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 5,
             titulo: "Tarea 5",
             descripcion: "Descripción de la Tarea 5",
             etiqueta: "Reunión",
@@ -104,6 +115,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 6,
             titulo: "Tarea 6",
             descripcion: "Descripción de la Tarea 6",
             etiqueta: "Finanzas",
@@ -112,11 +124,13 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 6.1",
                     descripcion: "Descripción de la Subtarea 6.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 6.2",
                     descripcion: "Descripción de la Subtarea 6.2",
                     completado: 0
@@ -124,6 +138,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 7,
             titulo: "Tarea 7",
             descripcion: "Descripción de la Tarea 7",
             etiqueta: "Proyecto",
@@ -133,6 +148,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 8,
             titulo: "Tarea 8",
             descripcion: "Descripción de la Tarea 8",
             etiqueta: "Mantenimiento",
@@ -141,16 +157,19 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 8.1",
                     descripcion: "Descripción de la Subtarea 8.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 8.2",
                     descripcion: "Descripción de la Subtarea 8.2",
                     completado: 1
                 },
                 {
+                    index: 3,
                     titulo: "Subtarea 8.3",
                     descripcion: "Descripción de la Subtarea 8.3",
                     completado: 0
@@ -158,6 +177,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 9,
             titulo: "Tarea 9",
             descripcion: "Descripción de la Tarea 9",
             etiqueta: "Cuidado Personal",
@@ -167,6 +187,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 10,
             titulo: "Tarea 10",
             descripcion: "Descripción de la Tarea 10",
             etiqueta: "Trabajo",
@@ -175,11 +196,13 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 10.1",
                     descripcion: "Descripción de la Subtarea 10.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 10.2",
                     descripcion: "Descripción de la Subtarea 10.2",
                     completado: 0
@@ -187,6 +210,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 11,
             titulo: "Tarea 11",
             descripcion: "Descripción de la Tarea 11",
             etiqueta: "Hogar",
@@ -196,6 +220,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 12,
             titulo: "Tarea 12",
             descripcion: "Descripción de la Tarea 12",
             etiqueta: "Estudio",
@@ -204,16 +229,19 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 12.1",
                     descripcion: "Descripción de la Subtarea 12.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 12.2",
                     descripcion: "Descripción de la Subtarea 12.2",
                     completado: 0
                 },
                 {
+                    index: 3,
                     titulo: "Subtarea 12.3",
                     descripcion: "Descripción de la Subtarea 12.3",
                     completado: 1
@@ -221,6 +249,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 13,
             titulo: "Tarea 13",
             descripcion: "Descripción de la Tarea 13",
             etiqueta: "Ejercicio",
@@ -230,6 +259,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 14,
             titulo: "Tarea 14",
             descripcion: "Descripción de la Tarea 14",
             etiqueta: "Reunión",
@@ -238,11 +268,13 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 14.1",
                     descripcion: "Descripción de la Subtarea 14.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 14.2",
                     descripcion: "Descripción de la Subtarea 14.2",
                     completado: 0
@@ -250,6 +282,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 15,
             titulo: "Tarea 15",
             descripcion: "Descripción de la Tarea 15",
             etiqueta: "Finanzas",
@@ -259,6 +292,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 16,
             titulo: "Tarea 16",
             descripcion: "Descripción de la Tarea 16",
             etiqueta: "Proyecto",
@@ -267,16 +301,19 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 16.1",
                     descripcion: "Descripción de la Subtarea 16.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 16.2",
                     descripcion: "Descripción de la Subtarea 16.2",
                     completado: 0
                 },
                 {
+                    index: 3,
                     titulo: "Subtarea 16.3",
                     descripcion: "Descripción de la Subtarea 16.3",
                     completado: 1
@@ -284,6 +321,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 17,
             titulo: "Tarea 17",
             descripcion: "Descripción de la Tarea 17",
             etiqueta: "Mantenimiento",
@@ -293,6 +331,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 18,
             titulo: "Tarea 18",
             descripcion: "Descripción de la Tarea 18",
             etiqueta: "Cuidado Personal",
@@ -301,11 +340,13 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 18.1",
                     descripcion: "Descripción de la Subtarea 18.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 18.2",
                     descripcion: "Descripción de la Subtarea 18.2",
                     completado: 0
@@ -313,6 +354,7 @@ const TaskProvider = ({children}) => {
             ]
         },
         {
+            index: 19,
             titulo: "Tarea 19",
             descripcion: "Descripción de la Tarea 19",
             etiqueta: "Trabajo",
@@ -322,6 +364,7 @@ const TaskProvider = ({children}) => {
             subTasks: []
         },
         {
+            index: 20,
             titulo: "Tarea 20",
             descripcion: "Descripción de la Tarea 20",
             etiqueta: "Hogar",
@@ -330,11 +373,13 @@ const TaskProvider = ({children}) => {
             completado: 0,
             subTasks: [
                 {
+                    index: 1,
                     titulo: "Subtarea 20.1",
                     descripcion: "Descripción de la Subtarea 20.1",
                     completado: 1
                 },
                 {
+                    index: 2,
                     titulo: "Subtarea 20.2",
                     descripcion: "Descripción de la Subtarea 20.2",
                     completado: 0
@@ -387,7 +432,7 @@ const TaskProvider = ({children}) => {
 
 
     return (
-        <TaskContext.Provider value={{tasks, taskDerivado, setBusqueda, setSeleccionEstado, seleccionEstado, filtroBusqueda, busqueda}}>
+        <TaskContext.Provider value={{tasks, setTasks, taskDerivado, setBusqueda, setSeleccionEstado, seleccionEstado, filtroBusqueda, busqueda}}>
             {children}
         </TaskContext.Provider>
     )
