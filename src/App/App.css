@@ -3,6 +3,7 @@
     justify-content: space-evenly;
     flex: 1;
 }
+
 .app-head{
     display: flex;
     justify-content: center;
@@ -18,4 +19,32 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.app-button-content{
+    border-radius: 100%;
+    border: none;
+    background-color: #0b0291;
+    color: white;
+    padding: 0.5rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.app-button-content:hover{
+    background-color: #06004e;
+}
+
+.clicked{
+    background-color: #06004e;
+    transform: scale(1.25) rotate(45deg);
 }

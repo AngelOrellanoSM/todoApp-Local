@@ -1,0 +1,77 @@
+.formulario-content{
+    background-color: #fff;
+    width: 40%;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    border: #241663d7 solid 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-content span{
+    color: #ff0000;
+}
+
+.inputs-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+}
+
+.inputs-content input,
+.inputs-content select{
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: solid 1px  #2416634d ;
+    background-color: #f3eeee71;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.textArea-content{
+    margin-bottom: 2rem;
+}
+
+.textArea-content textarea{
+    resize: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 5rem;
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    border: solid 1px  #2416634d ;
+    background-color: #f3eeee71;
+    overflow-y: hidden;
+}
+
+.textArea-content textarea:focus,
+.inputs-content select:focus,
+.inputs-content input:focus{
+    outline: none;
+    border: solid 2px  #150072 ;
+}
+
+.button-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-content button{
+    width: 7rem;
+    height: 2.5rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: solid 1px  #2416634d ;
+    cursor: pointer;
+}
+
+.button-cancelar{
+    background-color: #fff;
+}
+
+.button-aceptar{
+    background-color: #150072;
+    color: #fff;
+}

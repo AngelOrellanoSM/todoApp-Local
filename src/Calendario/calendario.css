@@ -2,11 +2,14 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: max-content;
     margin: 1.5rem;
     border: 1px solid #000;
     border-radius: 10px;
     padding: 1.5rem;
     gap: 1rem;
+    position: sticky;
+    top: 1rem;
 }
 
 .content-time{
@@ -41,7 +44,7 @@
     display: grid;
     grid-template-columns: repeat(7, 14.28%);
     grid-template-rows: min-content;
-    grid-auto-rows: 10rem;
+    grid-auto-rows: 9rem;
     gap: 1px;
 }
 
