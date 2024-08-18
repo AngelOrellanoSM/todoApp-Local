@@ -8,6 +8,7 @@ import { TaskContext } from '../../Contexts/TasksContext';
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { Modal } from '../../Modal';
 import { FormularioSubTarea } from '../../FormularioSubTarea';
+import { FormularioTareaEdit } from '../../FormularioTarea/FormularioTareaEdit';
 
 
 
@@ -51,6 +52,7 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
 
 
     const [añadirSubTarea, setAñadirSubTarea] = useState(false);
+    const [editarTarea, setEditarTarea] = useState(false);
 
 
     return (
@@ -63,7 +65,7 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
                     <p className={"content-texto"}>
                         {tarea.descripcion}
                     </p>
-                    <p>{tarea.fecha.getDate()}/{tarea.fecha.getMonth()}/{tarea.fecha.getFullYear()}</p>
+                    <p>{tarea.fecha.getDate()}/{tarea.fecha.getMonth()+1}/{tarea.fecha.getFullYear()}</p>
                     <div className={"content-etiqueta"}>
                         {tarea.etiqueta}
                     </div>
@@ -75,7 +77,7 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
                                 <p>{completados} / {total}</p>
                             </div>
                         }
-                        <FaRegEdit  />
+                        <FaRegEdit  onClick={() => setEditarTarea(true)}/>
                         <MdDeleteOutline onClick={onDelete} />
                         <IoMdAddCircleOutline onClick={() => setAñadirSubTarea(true)}/>
                     </div>
@@ -83,6 +85,12 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
                         añadirSubTarea && 
                         <Modal>
                             <FormularioSubTarea cerrarEstado={() => setAñadirSubTarea(false)} indexTarea={tarea.index}></FormularioSubTarea>
+                        </Modal>
+                    }
+                    {
+                        editarTarea && 
+                        <Modal>
+                            <FormularioTareaEdit cerrarEstado={() => setEditarTarea(false)} indexTarea={tarea.index}></FormularioTareaEdit>
                         </Modal>
                     }
                 </div>
