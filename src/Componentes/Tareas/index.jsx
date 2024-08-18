@@ -9,6 +9,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { Modal } from '../../Modal';
 import { FormularioSubTarea } from '../../FormularioSubTarea';
 import { FormularioTareaEdit } from '../../FormularioTarea/FormularioTareaEdit';
+import { FormularioSubTareaEdit } from '../../FormularioSubTarea/FormularioSubTareaEdit';
 
 
 
@@ -53,6 +54,7 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
 
     const [añadirSubTarea, setAñadirSubTarea] = useState(false);
     const [editarTarea, setEditarTarea] = useState(false);
+    const [editarSubTarea, setEditarSubTarea] = useState({estado: false, indiceSub: 0});
 
 
     return (
@@ -105,12 +107,22 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
                                     {subTask.descripcion}
                                 </p>
                                 <div className={"content-icons"}>
-                                    <FaRegEdit  />
+                                    <FaRegEdit onClick={() => setEditarSubTarea({estado: true, indiceSub: subTask.index})} />
                                     <MdDeleteOutline  onClick={() => onDeleteSubTask(tarea.index, subTask.index)}/>
                                 </div>
                             </div>
                         )
                     })
+                }
+                {
+                    editarSubTarea.estado && 
+                    <Modal>
+                        <FormularioSubTareaEdit 
+                            cerrarEstado={() => setEditarSubTarea({estado: false, indiceSub: 0})} 
+                            indexSubTarea={editarSubTarea.indiceSub} 
+                            indexTarea={tarea.index} 
+                        />
+                    </Modal>
                 }
             </div>       
     )

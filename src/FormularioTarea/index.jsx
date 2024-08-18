@@ -7,7 +7,7 @@ const FormularioTarea = ({cerrarEstado}) => {
     const {tasks, setTasks} = useContext(TaskContext);
 
     const [newTaskValue, setNewTaskValue] = useState({
-        index: tasks[tasks.length - 1].index + 1,
+        index: tasks[tasks.length - 1] ? tasks[tasks.length - 1].index + 1 : 1,
         titulo: "",
         descripcion: "",
         etiqueta: "",
@@ -20,7 +20,12 @@ const FormularioTarea = ({cerrarEstado}) => {
 
     const crearTodo = (e) =>{
         e.preventDefault();
-        setTasks(prevValues => ([...prevValues,newTaskValue]));
+        if(tasks.length !== 0){
+            const nuevosTask = [...tasks, newTaskValue];
+            setTasks(nuevosTask);
+        }else{
+            setTasks([newTaskValue]);
+        }
         cerrarEstado();
     }
 
