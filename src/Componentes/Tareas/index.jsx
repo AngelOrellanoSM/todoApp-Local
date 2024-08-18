@@ -5,9 +5,13 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
 import { useContext, useState } from 'react';
 import { TaskContext } from '../../Contexts/TasksContext';
+import { IoMdAddCircleOutline } from "react-icons/io";
+import { Modal } from '../../Modal';
+import { FormularioSubTarea } from '../../FormularioSubTarea';
 
 
-const Tareas = ({tarea, onComplete, onDelete}) => {
+
+const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
 
     const {tasks, setTasks} = useContext(TaskContext);
 
@@ -45,6 +49,10 @@ const Tareas = ({tarea, onComplete, onDelete}) => {
 
     //--------------------------------------------------------------------------------------
 
+
+    const [añadirSubTarea, setAñadirSubTarea] = useState(false);
+
+
     return (
         
             <div className={`${tarea.importancia}-tarea contentGeneral`}>
@@ -69,13 +77,20 @@ const Tareas = ({tarea, onComplete, onDelete}) => {
                         }
                         <FaRegEdit  />
                         <MdDeleteOutline onClick={onDelete} />
+                        <IoMdAddCircleOutline onClick={() => setAñadirSubTarea(true)}/>
                     </div>
+                    {
+                        añadirSubTarea && 
+                        <Modal>
+                            <FormularioSubTarea cerrarEstado={() => setAñadirSubTarea(false)} indexTarea={tarea.index}></FormularioSubTarea>
+                        </Modal>
+                    }
                 </div>
                 {
                     subtareaVisible  && tarea.subTasks.map((subTask) => {
                         return (
-                            <div className={"subtask-content"} onClick={() => completeSubTask(subTask.index)} key={`${tarea.index}.${subTask.index}`}>
-                                <div className={"subtask-check"}>
+                            <div className={"subtask-content"} key={`${tarea.index}.${subTask.index}`}>
+                                <div className={"subtask-check"} onClick={() => completeSubTask(subTask.index)}>
                                     {subTask.completado === 1 && <FaCheck />}
                                 </div>
                                 <p className={"content-texto"}>
@@ -83,7 +98,7 @@ const Tareas = ({tarea, onComplete, onDelete}) => {
                                 </p>
                                 <div className={"content-icons"}>
                                     <FaRegEdit  />
-                                    <MdDeleteOutline  />
+                                    <MdDeleteOutline  onClick={() => onDeleteSubTask(tarea.index, subTask.index)}/>
                                 </div>
                             </div>
                         )

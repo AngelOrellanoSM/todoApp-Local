@@ -33,6 +33,16 @@ const Relevancia = ({relevancia}) => {
         setTasks(newTasks);
     }
 
+    const deleteSubTarea = (index, indexSub) => {
+        const newTasks = [...tasks];
+        const indice = newTasks.findIndex((task) => task.index === index);
+        const newSubtasks = [...newTasks[indice].subTasks];
+        const indiceSubTask = newSubtasks.findIndex((subtask) => subtask.index === indexSub);
+        newSubtasks.splice(indiceSubTask,1);
+        newTasks[indice].subTasks = newSubtasks;
+        setTasks(newTasks);
+    }
+
     return (
         <div className={`relevancia-content ${relevancia}-content`}>
             <div className={`content-titulo ${relevancia}`}>
@@ -47,6 +57,7 @@ const Relevancia = ({relevancia}) => {
                                     tarea={task} 
                                     onComplete={() => completarTarea(task.index)}
                                     onDelete = {() => deleteTarea(task.index)}
+                                    onDeleteSubTask = {deleteSubTarea}
                                 ></Tareas>
                             </div>
                         )

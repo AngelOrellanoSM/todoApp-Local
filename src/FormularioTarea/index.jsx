@@ -7,7 +7,7 @@ const FormularioTarea = ({cerrarEstado}) => {
     const {tasks, setTasks} = useContext(TaskContext);
 
     const [newTaskValue, setNewTaskValue] = useState({
-        index: tasks.length + 1,
+        index: tasks[tasks.length - 1].index + 1,
         titulo: "",
         descripcion: "",
         etiqueta: "",
