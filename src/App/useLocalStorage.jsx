@@ -7,6 +7,14 @@ const useLocalStorage = (name, valorInicial) => {
 
     if(localStorageItem){
         itemFormateado = JSON.parse(localStorageItem);
+        if(itemFormateado){
+            itemFormateado = itemFormateado.map((item) => {
+                if(item.fecha){
+                    item.fecha = new Date(item.fecha);
+                }
+                return item;
+            })
+        }
     }else{
         localStorage.setItem(name, JSON.stringify(valorInicial));
         itemFormateado = valorInicial;

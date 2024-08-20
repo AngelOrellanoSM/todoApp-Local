@@ -64,9 +64,9 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
                     <div className={"content-checkmark"} onClick={onComplete}>
                         {tarea.completado === 1 && <FaCheck />}
                     </div>
-                    <p className={"content-texto"}>
-                        {tarea.descripcion}
-                    </p>
+                    <div className={"content-texto"}>
+                        <p>{tarea.descripcion}</p>
+                    </div>
                     <p>{tarea.fecha.getDate()}/{tarea.fecha.getMonth()+1}/{tarea.fecha.getFullYear()}</p>
                     <div className={"content-etiqueta"}>
                         {tarea.etiqueta}
@@ -103,7 +103,7 @@ const Tareas = ({tarea, onComplete, onDelete, onDeleteSubTask}) => {
                                 <div className={"subtask-check"} onClick={() => completeSubTask(subTask.index)}>
                                     {subTask.completado === 1 && <FaCheck />}
                                 </div>
-                                <p className={"content-texto"}>
+                                <p className={"content-subtexto"}>
                                     {subTask.descripcion}
                                 </p>
                                 <div className={"content-icons"}>

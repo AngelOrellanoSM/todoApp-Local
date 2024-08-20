@@ -24,7 +24,7 @@ const DiaCalendar = ( {dia, mes, año, fechaCalendar}) => {
                     ${
                         fechaActual.getDate() === dia ?
                         fechaActual.getMonth() === mes ? 
-                        fechaActual.getFullYear() ? 'dayActual' : '' : '' : '' 
+                        fechaActual.getFullYear() === año ? 'dayActual' : '' : '' : '' 
                     }
                     
                     ${

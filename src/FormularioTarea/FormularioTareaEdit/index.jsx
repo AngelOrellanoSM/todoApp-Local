@@ -71,7 +71,7 @@ const FormularioTareaEdit = ({cerrarEstado, indexTarea}) =>{
                                 fechaIngresada.setDate(fechaIngresada.getDate() + 1);
                                 setDatosLocales((prevValue) => ({
                                     ...prevValue,
-                                    fechaFormateada: formatDateToInputValue(fechaIngresada),
+                                    fechaFormateada: e.target.value,
                                     fecha: fechaIngresada,
                                 }))
                             }}

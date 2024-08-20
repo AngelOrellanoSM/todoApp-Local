@@ -15,15 +15,17 @@ const Todos = () => {
     useEffect(() => {
         const exists = () =>{
             const updateRelevancia = {"Importante" : 0 , "Urgente" : 0 , "Complementario" : 0};
-            taskDerivado.forEach((task) => {
-                if(task.importancia === "Importante"){
-                    updateRelevancia.Importante = 1;
-                }else if (task.importancia === "Urgente"){
-                    updateRelevancia.Urgente = 1;
-                }else if (task.importancia === "Complementario"){
-                    updateRelevancia.Complementario = 1;
-                }
-            })
+            if(taskDerivado){
+                taskDerivado.forEach((task) => {
+                    if(task.importancia === "Importante"){
+                        updateRelevancia.Importante = 1;
+                    }else if (task.importancia === "Urgente"){
+                        updateRelevancia.Urgente = 1;
+                    }else if (task.importancia === "Complementario"){
+                        updateRelevancia.Complementario = 1;
+                    }
+                })
+            }
             setRelevanciaExistencia(updateRelevancia);
         }
         exists();

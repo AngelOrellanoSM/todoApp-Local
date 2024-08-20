@@ -82,6 +82,15 @@ const Calendario = () => {
                 });
                 indice++;
             }
+            if(diasCalendario.length === 28){
+                for(let i = 1; i <= 7; i++){
+                    diasCalendario.push({
+                        dia: i,
+                        mes: primerDiaMesSiguiente.getMonth(),
+                        año: primerDiaMesSiguiente.getFullYear(),
+                    });
+                }
+            }
             setDiasCalendar(diasCalendario)
         }
 
